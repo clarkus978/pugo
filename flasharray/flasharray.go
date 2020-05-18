@@ -329,7 +329,7 @@ func validateResponse(r *http.Response) error {
 
 	bodyBytes, _ := ioutil.ReadAll(r.Body)
 	bodyString := string(bodyBytes)
-	return fmt.Errorf("Response code: %d, ResponeBody: %s", r.StatusCode, bodyString)
+	return fmt.Errorf("Response code: %d, Response Body: %s", r.StatusCode, bodyString)
 }
 
 // checkRestVersion will check that the specified rest_version is supported
