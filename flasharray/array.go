@@ -70,6 +70,22 @@ func (v *ArrayService) GetArrayMonitor(params map[string]string) ([]Array, error
 	return m, nil
 }
 
+// GetArrayMonitorSpace returns an object describing the flash array
+func (v *ArrayService) GetArrayMonitorSpace() ([]Array, error) {
+
+	p := make(map[string]string)
+	p["action"] = "monitor"
+	p["space"] = "true"
+	req, _ := v.client.NewRequest("GET", "array", p, nil)
+	m := []Array{}
+	_, err := v.client.Do(req, &m, false)
+	if err != nil {
+		return nil, err
+	}
+
+	return m, nil
+}
+
 // Set will change the parameter on the array that is passed in the data map
 func (v *ArrayService) Set(data interface{}) (*Array, error) {
 
